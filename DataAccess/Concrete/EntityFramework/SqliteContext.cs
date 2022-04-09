@@ -9,7 +9,7 @@ namespace DataAccess.Concrete.EntityFramework
         // veri tabani baglantisini saglar
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source=C:\Users\Emir\source\repos\SchoolProject\MainUI\AppDataBase.db;");
+            optionsBuilder.UseSqlite(@"Data Source=C:\Users\Emir\source\repos\SchoolProject\DataAccess\AppDataBase.db;");
         }
 
         // User class'i ile Users Tablosunu iliskilendirir

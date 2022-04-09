@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System.Collections.Generic;
 
 namespace Business.Concrete
@@ -19,6 +20,11 @@ namespace Business.Concrete
         public List<Todo> GetAll()
         {
             return _todoDal.GetAll();
+        }
+
+        public List<TodoDetailDto> GetTodoDetails()
+        {
+            return _todoDal.GetTodoDetails();
         }
     }
 }

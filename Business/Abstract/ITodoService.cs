@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using System.Collections.Generic;
 
 namespace Business.Abstract
@@ -7,5 +8,6 @@ namespace Business.Abstract
     public interface ITodoService
     {
         List<Todo> GetAll();
+        List<TodoDetailDto> GetTodoDetails();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -175,6 +176,11 @@ namespace DataAccess.Concrete.InMemory
         public Todo GetTodo(int id)
         {
             return _todos.SingleOrDefault(t => t.Id == id);
+        }
+
+        public List<TodoDetailDto> GetTodoDetails()
+        {
+            throw new NotImplementedException();
         }
 
         // Todo guncelle

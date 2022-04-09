@@ -18,6 +18,9 @@ namespace Entities.Concrete
         // Proje Adi - Bos olamaz
         public string? ProjectName { get; set; }
 
+        // Proje olusturulma Tarihi
+        public string? CreatedDate { get; set; }
+
         // Projedeki Toplam Todo Sayisi - Bos olamaz - Default = 0
         public int TotalTodosInProject { get; set; }
 

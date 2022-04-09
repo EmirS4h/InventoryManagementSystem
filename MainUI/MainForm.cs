@@ -9,8 +9,8 @@ namespace MainUI
         public MainForm()
         {
             InitializeComponent();
-            ProjectManager manager = new ProjectManager(new EfProjectDal());
-            dataGridView1.DataSource = manager.GetAllByMinTodoCount(2);
+            TodoManager manager = new TodoManager(new EfTodoDal());
+            dataGridView1.DataSource = manager.GetTodoDetails();
         }
     }
 }
