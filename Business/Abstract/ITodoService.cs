@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
+    // Todo ile ilgili kontrol operasyonlarini tutar
     public interface ITodoService
     {
         List<Todo> GetAll();

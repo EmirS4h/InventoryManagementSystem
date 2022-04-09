@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    // Proje ile ilgili veri tabani operasyonlarini icerir
-    public interface IProjectDal : IEntityRepository<Project>
+    // User ile ilgili veri tabani operasyonlarini icerir
+    public interface IUserDal : IEntityRepository<User>
     {
-        
     }
 }

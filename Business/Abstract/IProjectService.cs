@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Abstract
+namespace Business.Abstract
 {
-    // Proje ile ilgili veri tabani operasyonlarini icerir
-    public interface IProjectDal : IEntityRepository<Project>
+    public interface IProjectService
     {
-        
+        List<Project> GetAll();
     }
 }

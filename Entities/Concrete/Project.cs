@@ -12,6 +12,9 @@ namespace Entities.Concrete
         // Project Id - Bos olamaz
         public int Id { get; set; }
 
+        // Hangi kullaniciya ait - Bos olamaz
+        public int UserId { get; set; }
+
         // Proje Adi - Bos olamaz
         public string? ProjectName { get; set; }
 

@@ -72,6 +72,61 @@ namespace DataAccess.Concrete.InMemory
                     CompletedDate = "",
                     UpdatedDate = "",
                 },
+                new Todo
+                {
+                    Id = 1,
+                    ProjectId = 1,
+                    Completed = 0,
+                    TodoText = "First Todo of Project 1",
+                    CreatedDate = "08.04.2022",
+                    Priority = "Low",
+                    CompletedDate = "",
+                    UpdatedDate = "",
+                },
+                new Todo
+                {
+                    Id = 2,
+                    ProjectId = 1,
+                    Completed = 1,
+                    TodoText = "Second Todo of Project 1",
+                    CreatedDate = "08.04.2022",
+                    Priority = "Medium",
+                    CompletedDate = "",
+                    UpdatedDate = "",
+                },
+                new Todo
+                {
+                    Id = 3,
+                    ProjectId = 2,
+                    Completed = 1,
+                    TodoText = "First Todo of Project 2",
+                    CreatedDate = "08.04.2022",
+                    Priority = "High",
+                    CompletedDate = "",
+                    UpdatedDate = "",
+                },
+                new Todo
+                {
+                    Id = 4,
+                    ProjectId = 3,
+                    Completed = 0,
+                    TodoText = "First Todo of Project 3",
+                    CreatedDate = "08.04.2022",
+                    Priority = "Medium",
+                    CompletedDate = "",
+                    UpdatedDate = "",
+                },
+                new Todo
+                {
+                    Id = 5,
+                    ProjectId = 1,
+                    Completed = 0,
+                    TodoText = "First Todo of Project 5",
+                    CreatedDate = "08.04.2022",
+                    Priority = "High",
+                    CompletedDate = "",
+                    UpdatedDate = "",
+                },
             };
         }
 

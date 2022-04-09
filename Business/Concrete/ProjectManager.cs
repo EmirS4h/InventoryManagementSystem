@@ -9,19 +9,16 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    // Todo ile ilgili Kontrolleri yapar
-    public class TodoManager : ITodoService
+    public class ProjectManager : IProjectService
     {
-        ITodoDal _todoDal;
-
-        public TodoManager(ITodoDal todoDal)
+        IProjectDal _projectDal;
+        public ProjectManager(IProjectDal projectDal)
         {
-            _todoDal=todoDal;
+            _projectDal = projectDal;
         }
-
-        public List<Todo> GetAll()
+        public List<Project> GetAll()
         {
-            return _todoDal.GetAllTodo();
+            return _projectDal.GetAll();
         }
     }
 }

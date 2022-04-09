@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -65,12 +66,12 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
 
-        public List<Project> GetAll()
+        public Project Get(Expression<Func<Project, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public Project GetById(int id)
+        public List<Project> GetAll(Expression<Func<Project, bool>> filter = null)
         {
             throw new NotImplementedException();
         }

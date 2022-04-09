@@ -1,5 +1,7 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
+using DataAccess.Concrete.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,13 +19,8 @@ namespace MainUI
         public MainForm()
         {
             InitializeComponent();
-            TodoManager manager = new TodoManager(new InMemoryTodoDal());
+            ProjectManager manager = new ProjectManager(new EfProjectDal());
             dataGridView1.DataSource = manager.GetAll();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
