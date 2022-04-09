@@ -1,14 +1,14 @@
 ﻿using Entities.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
     public interface IProjectService
     {
         List<Project> GetAll();
+        List<Project> GetAllByUserId(int id);
+        List<Project> GetAllByTodoCount(int min,int max);
+        List<Project> GetAllByMinTodoCount(int min);
+        List<Project> GetAllByMaxTodoCount(int max);
     }
 }

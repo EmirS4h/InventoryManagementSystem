@@ -3,8 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -148,6 +147,16 @@ namespace DataAccess.Concrete.InMemory
             //}
             Todo todoToDelete = _todos.SingleOrDefault(t => t.Id == todo.Id);
             _todos.Remove(todoToDelete);
+        }
+
+        public Todo Get(Expression<Func<Todo, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Todo> GetAll(Expression<Func<Todo, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         // ProjeId'si uyan Todolari getir

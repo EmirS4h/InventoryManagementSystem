@@ -2,9 +2,7 @@
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.Sqlite
 {
@@ -17,6 +15,16 @@ namespace DataAccess.Concrete.Sqlite
         }
 
         public void Delete(Todo todo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Todo Get(Expression<Func<Todo, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Todo> GetAll(Expression<Func<Todo, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
