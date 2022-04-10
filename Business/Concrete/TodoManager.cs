@@ -17,6 +17,11 @@ namespace Business.Concrete
             _todoDal = todoDal;
         }
 
+        public void Add(Todo todo)
+        {
+            _todoDal.Add(todo);
+        }
+
         public List<Todo> GetAll()
         {
             return _todoDal.GetAll();

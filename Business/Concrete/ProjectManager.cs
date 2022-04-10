@@ -14,6 +14,20 @@ namespace Business.Concrete
             _projectDal = projectDal;
         }
 
+        // Proje ekle
+        public bool Add(Project project)
+        {
+            var projectExist = _projectDal.Get(p=> p.Id == project.Id);
+            if (projectExist is not null) return false;
+            _projectDal.Add(project);
+            return true;
+        }
+
+        public void Delete(Project project)
+        {
+            _projectDal.Delete(project);
+        }
+
         // Butun Projeleri getir
         public List<Project> GetAll()
         {

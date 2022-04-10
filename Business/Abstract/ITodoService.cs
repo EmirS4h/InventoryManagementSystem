@@ -9,5 +9,6 @@ namespace Business.Abstract
     {
         List<Todo> GetAll();
         List<TodoDetailDto> GetTodoDetails();
+        void Add(Todo todo);
     }
 }

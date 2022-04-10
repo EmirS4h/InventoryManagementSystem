@@ -9,7 +9,7 @@ namespace Entities.Concrete
 {
     public class Project : IEntity
     {
-        // Project Id - Bos olamaz
+        // Project Id - Bos olamaz - AutoInc
         public int Id { get; set; }
 
         // Hangi kullaniciya ait - Bos olamaz
