@@ -6,7 +6,7 @@ namespace Core.PasswordControls
 {
     public class SecurePassword
     {
-        string HashPassword(string pass)
+        public string HashPassword(string pass)
         {
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {
@@ -14,7 +14,7 @@ namespace Core.PasswordControls
                 return Convert.ToBase64String(data);
             }
         }
-        bool CheckIfPasswordsMatch(string password,string hashedPassword)
+        public bool CheckIfPasswordsMatch(string password,string hashedPassword)
         {
             if (HashPassword(password).Equals(hashedPassword))
                 return true;

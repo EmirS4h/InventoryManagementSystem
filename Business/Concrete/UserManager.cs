@@ -27,5 +27,10 @@ namespace Business.Concrete
         {
             return _userDal.Get(user => user.Username == name);
         }
+
+        public void Add(User newUser)
+        {
+            _userDal.Add(newUser);
+        }
     }
 }
