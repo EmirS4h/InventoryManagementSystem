@@ -23,77 +23,65 @@ namespace MainUI
             InitializeComponent();
             userManager = new UserManager(new EfUserDal());
             securePassword = new SecurePassword();
-
-            bool defaultLogin = Properties.Settings.Default.DefaultLogin;
-            if (defaultLogin)
-            {
-                User user = userManager.GetByUsername(Properties.Settings.Default.DefaultUsername);
-                LoadForm(new UserUI(), panel1);
-                LoadForm(new Navigation(user), panel2);
-            }
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            if (usernameBox.Text != "" && passwordBox.Text != "")
-            {
-                errorLabel.Visible =  false;
-                // Girilen verileri al
-                string username = usernameBox.Text;
-                string password = passwordBox.Text;
-                // Kullanici kayitlimi kontrol et
-                User userExist = userManager.GetByUsername(username);
+            string userNameInput = textBox1.Text;
+            string passwordInput = textBox2.Text;
 
-                // Eger kullanici kayitli ise Veri tabanindaki sifre ile Girilen sifre aynimi kontrol et
-                if (userExist != null && securePassword.CheckIfPasswordsMatch(password, userExist.Password))
+            if (userNameInput != "" && passwordInput != "")
+            {
+                // Kullanıcı varmı kontrol et
+                User userExist = CheckIfUserExist(userNameInput);
+
+                // Eger kullanıcı varsa
+                if (userExist != null)
                 {
-                    if (rememberMe.Checked)
+                    // Sifre dogrumu kontrol et
+                    if (securePassword.CheckIfPasswordsMatch(passwordInput, userExist.Password))
                     {
-                        Properties.Settings.Default["DefaultUsername"] = userExist.Username;
-                        Properties.Settings.Default["DefaultUserPassword"] = userExist.Password;
-                        Properties.Settings.Default["DefaultLogin"] = true;
-                        Properties.Settings.Default.Save();
+                        // Sifre dogruysa
+                        LoadFormToPanel(new UserUI(userExist), panel3);
                     }
-                    LoadForm(new UserUI(),panel1);
-                    usernameBox.Text = "";
-                    passwordBox.Text = "";
-                    rememberMe.Checked = false;
+                    else
+                    {
+                        // Sifre dogru degilse hata mesajı goster
+                        label2.Visible = true;
+                    }
                 }
-                // Kullanici kayitli degilse 
-                // Kayıt olmak istermi diye sor
                 else
                 {
-                    DialogResult result = MessageBox.Show("Böyle bir kullanıcı yok. Yeni kayıt yapmak istermisiniz?", "Kullanıcı Yok", MessageBoxButtons.YesNo);
-                    // Eger kullanici kayit olmak ister ise
-                    if (result == DialogResult.Yes)
-                    {
-                        // yeni kullanici kaydi yap
-                        userManager.Add(new User { Password = securePassword.HashPassword(password), Username = username });
-                    }
+                    label2.Visible = true;
                 }
             }
             else
             {
-                errorLabel.Visible =  true;
+                label1.Visible = true;
             }
+
         }
 
-
-        private void LoadForm(Form form,Panel panel)
+        // Kullanıcı varmı kontrol et
+        private User CheckIfUserExist(string username)
         {
-            if(panel.Controls.Count > 0)
+            User user = userManager.GetByUsername(username);
+            return user;
+        }
+
+        // Panel icerigini degistir
+        private void LoadFormToPanel(Form form, Panel panel)
+        {
+            // Panelde halihazırda bir icerik varsa temizle
+            if (panel.Controls.Count > 0)
             {
                 panel.Controls.Clear();
             }
-
+            // yeni icerik ekle
             form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
             panel.Controls.Add(form);
             form.Show();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

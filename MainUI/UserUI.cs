@@ -13,17 +13,16 @@ namespace MainUI
 {
     public partial class UserUI : Form
     {
-        public UserUI()
+        string username;
+        public UserUI(User user)
         {
             InitializeComponent();
+            username = user.Username;
+            label1.Text = username;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void UserUI_Load(object sender, EventArgs e)
         {
-            Properties.Settings.Default["DefaultUsername"] = "";
-            Properties.Settings.Default["DefaultUserPassword"] = "";
-            Properties.Settings.Default["DefaultLogin"] = false;
-            Properties.Settings.Default.Save();
         }
     }
 }
