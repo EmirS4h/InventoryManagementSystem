@@ -35,11 +35,13 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.rememberMe = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.rememberMe);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.loginBtn);
@@ -55,7 +57,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.IndianRed;
-            this.label1.Location = new System.Drawing.Point(29, 176);
+            this.label1.Location = new System.Drawing.Point(29, 211);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 15);
             this.label1.TabIndex = 5;
@@ -66,7 +68,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.IndianRed;
-            this.label2.Location = new System.Drawing.Point(29, 149);
+            this.label2.Location = new System.Drawing.Point(29, 184);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 15);
             this.label2.TabIndex = 4;
@@ -76,7 +78,7 @@
             // loginBtn
             // 
             this.loginBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginBtn.Location = new System.Drawing.Point(29, 89);
+            this.loginBtn.Location = new System.Drawing.Point(29, 124);
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(169, 48);
             this.loginBtn.TabIndex = 2;
@@ -110,6 +112,16 @@
             this.panel3.Size = new System.Drawing.Size(1037, 681);
             this.panel3.TabIndex = 2;
             // 
+            // rememberMe
+            // 
+            this.rememberMe.AutoSize = true;
+            this.rememberMe.Location = new System.Drawing.Point(29, 99);
+            this.rememberMe.Name = "rememberMe";
+            this.rememberMe.Size = new System.Drawing.Size(87, 19);
+            this.rememberMe.TabIndex = 6;
+            this.rememberMe.Text = "Beni Hatırla";
+            this.rememberMe.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -136,5 +148,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox rememberMe;
     }
 }

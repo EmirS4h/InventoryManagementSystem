@@ -16,22 +16,50 @@ namespace MainUI
 {
     public partial class MainForm : Form
     {
-        UserManager userManager;
-        SecurePassword securePassword;
+        readonly UserManager userManager;
+        readonly SecurePassword securePassword;
+
+        enum DockStyles
+        {
+            LEFT,
+            RIGHT,
+            TOP,
+            BOTTOM,
+            FILL,
+        }
+
         public MainForm()
         {
             InitializeComponent();
             userManager = new UserManager(new EfUserDal());
             securePassword = new SecurePassword();
+
+            // Default User varsa giris yap
+            if (Properties.Settings.Default.DefaultLogin)
+            {
+                LoginDefaultUser();
+            }
+
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
             string userNameInput = textBox1.Text;
             string passwordInput = textBox2.Text;
+            bool remember = rememberMe.Checked;
+
+            if (remember)
+            {
+                SetDefaultUser(userNameInput);
+            }
+            else
+            {
+                ClearDefaultUser();
+            }
 
             if (userNameInput != "" && passwordInput != "")
             {
+
                 // Kullanıcı varmı kontrol et
                 User userExist = CheckIfUserExist(userNameInput);
 
@@ -42,7 +70,8 @@ namespace MainUI
                     if (securePassword.CheckIfPasswordsMatch(passwordInput, userExist.Password))
                     {
                         // Sifre dogruysa
-                        LoadFormToPanel(new UserUI(userExist), panel3);
+                        LoadFormToPanel(new UserUI(userExist), panel3, DockStyles.FILL);
+                        LoadFormToPanel(new Navigation(userExist), panel1, DockStyles.FILL);
                     }
                     else
                     {
@@ -70,7 +99,7 @@ namespace MainUI
         }
 
         // Panel icerigini degistir
-        private void LoadFormToPanel(Form form, Panel panel)
+        private static void LoadFormToPanel(Form form, Panel panel, DockStyles style)
         {
             // Panelde halihazırda bir icerik varsa temizle
             if (panel.Controls.Count > 0)
@@ -79,9 +108,41 @@ namespace MainUI
             }
             // yeni icerik ekle
             form.TopLevel = false;
-            form.Dock = DockStyle.Fill;
+
+            form.Dock = style switch
+            {
+                DockStyles.FILL => DockStyle.Fill,
+                DockStyles.TOP => DockStyle.Top,
+                DockStyles.BOTTOM => DockStyle.Bottom,
+                DockStyles.LEFT => DockStyle.Left,
+                DockStyles.RIGHT => DockStyle.Right,
+                _ => DockStyle.Fill,
+            };
+
             panel.Controls.Add(form);
             form.Show();
+        }
+
+        private void LoginDefaultUser()
+        {
+            string username = Properties.Settings.Default.Username;
+            User user = userManager.GetByUsername(username);
+            LoadFormToPanel(new UserUI(user), panel3, DockStyles.FILL);
+            LoadFormToPanel(new Navigation(user), panel1, DockStyles.FILL);
+        }
+
+        private static void SetDefaultUser(string username)
+        {
+            Properties.Settings.Default.DefaultLogin = true;
+            Properties.Settings.Default.Username = username;
+            Properties.Settings.Default.Save();
+
+        }
+        private static void ClearDefaultUser()
+        {
+            Properties.Settings.Default.DefaultLogin = false;
+            Properties.Settings.Default.Username = "";
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -26,24 +26,24 @@ namespace MainUI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DefaultUsername {
+        public string Username {
             get {
-                return ((string)(this["DefaultUsername"]));
+                return ((string)(this["Username"]));
             }
             set {
-                this["DefaultUsername"] = value;
+                this["Username"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DefaultUserPassword {
+        public string UserPassword {
             get {
-                return ((string)(this["DefaultUserPassword"]));
+                return ((string)(this["UserPassword"]));
             }
             set {
-                this["DefaultUserPassword"] = value;
+                this["UserPassword"] = value;
             }
         }
         
