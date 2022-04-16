@@ -8,6 +8,5 @@ namespace DataAccess.Abstract
     // Todo ile ilgili ozel veri tabani operasyonlarini icerir
     public interface ITodoDal : IEntityRepository<Todo>
     {
-        List<TodoDetailDto> GetTodoDetails();
     }
 }

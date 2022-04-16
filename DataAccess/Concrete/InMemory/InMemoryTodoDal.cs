@@ -172,6 +172,11 @@ namespace DataAccess.Concrete.InMemory
             return _todos;
         }
 
+        public List<Todo> GetAllTodosByProjectId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         // Id'ye gore Todo getir
         public Todo GetTodo(int id)
         {

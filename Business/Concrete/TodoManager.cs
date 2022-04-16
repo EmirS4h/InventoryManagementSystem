@@ -27,9 +27,9 @@ namespace Business.Concrete
             return _todoDal.GetAll();
         }
 
-        public List<TodoDetailDto> GetTodoDetails()
+        public List<Todo> GetAllTodosByProjectId(int id)
         {
-            return _todoDal.GetTodoDetails();
+            return _todoDal.GetAll(t => t.ProjectId == id);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Business.Abstract
     public interface ITodoService
     {
         List<Todo> GetAll();
-        List<TodoDetailDto> GetTodoDetails();
+        List<Todo> GetAllTodosByProjectId(int id);
         void Add(Todo todo);
     }
 }

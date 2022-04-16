@@ -1,29 +1,26 @@
 ﻿using Entities.Concrete;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MainUI
 {
     public partial class Navigation : Form
     {
+        User user;
         public Navigation(User user)
         {
             InitializeComponent();
-            usernameLabel.Text = user.Username;
+            this.user = user;
+            LoadUserDetails();
         }
 
-        private void logoutBtn_Click(object sender, EventArgs e)
+        // Kullanıcının detaylarını yukle
+        private void LoadUserDetails()
         {
-            Properties.Settings.Default.DefaultLogin = false;
-            Properties.Settings.Default.Username = "";
-            Properties.Settings.Default.Save();
+            usernameLabel.Text = user.Username;
+            totalProjectCount.Text = user.TotalProjects.ToString();
+            projectsCompleted.Text = user.TotalProjectsCompleted.ToString();
+            projectsLeft.Text = (user.TotalProjects - user.TotalProjectsCompleted).ToString();
         }
     }
 }

@@ -40,6 +40,11 @@ namespace DataAccess.Concrete.Sqlite
             return new List<Todo>() { new Todo { TodoText="sqlite todo"} };
         }
 
+        public List<Todo> GetAllTodosByProjectId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Todo GetTodo(int id)
         {
             throw new NotImplementedException();
