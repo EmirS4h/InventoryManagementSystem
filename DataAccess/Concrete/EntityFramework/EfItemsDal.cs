@@ -1,13 +1,15 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace DataAccess.Concrete.EntityFramework
 {
-    // Todo ile ilgili veri tabani islemlerini gerceklestirir
-    public class EfTodoDal : EfEntityRepositoryBase<Todo, SqliteContext>, ITodoDal
+    public class EfItemsDal : EfEntityRepositoryBase<Items, SqliteContext>, IItemsDal
     {
     }
 }

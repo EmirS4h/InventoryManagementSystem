@@ -14,12 +14,9 @@ namespace DataAccess.Concrete.EntityFramework
         }
 
         // User class'i ile Users Tablosunu iliskilendirir
-        public DbSet<User> Users { get; set; }
+        public DbSet<Users> Users { get; set; }
 
         // Project class'i ile Projects Tablosunu iliskilendirir
-        public DbSet<Project> Projects { get; set; }
-
-        // Todo class'i ile Todos Tablosunu iliskilendirir
-        public DbSet<Todo> Todos { get; set; }
+        public DbSet<Items> Items { get; set; }
     }
 }

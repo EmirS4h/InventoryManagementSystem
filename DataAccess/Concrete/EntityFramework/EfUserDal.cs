@@ -4,7 +4,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfUserDal : EfEntityRepositoryBase<User, SqliteContext>, IUserDal
+    public class EfUserDal : EfEntityRepositoryBase<Users, SqliteContext>, IUserDal
     {
        
     }

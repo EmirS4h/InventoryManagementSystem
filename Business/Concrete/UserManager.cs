@@ -14,21 +14,21 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-        public List<User> GetAll()
+        public List<Users> GetAll()
         {
             return _userDal.GetAll();
         }
 
-        public User GetById(int id)
+        public Users GetById(int id)
         {
             return _userDal.Get(user => user.Id == id);
         }
-        public User GetByUsername(string name)
+        public Users GetByName(string name)
         {
-            return _userDal.Get(user => user.Username == name);
+            return _userDal.Get(user => user.Name == name);
         }
 
-        public void Add(User newUser)
+        public void Add(Users newUser)
         {
             _userDal.Add(newUser);
         }

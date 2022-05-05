@@ -4,7 +4,7 @@ using Entities.Concrete;
 namespace DataAccess.Abstract
 {
     // User ile ilgili veri tabani operasyonlarini icerir
-    public interface IUserDal : IEntityRepository<User>
+    public interface IUserDal : IEntityRepository<Users>
     {
     }
 }

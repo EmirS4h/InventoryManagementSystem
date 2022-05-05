@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IUserService
+    public interface IItemsService
     {
-        List<Users> GetAll();
-        Users GetById(int id);
-        Users GetByName(string name);
+        List<Items> GetAll();
+        Items GetById(int id);
+        Items GetByName(string name);
     }
 }
