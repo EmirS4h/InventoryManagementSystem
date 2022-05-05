@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
@@ -7,18 +9,24 @@ namespace Api.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        UsersManager usersManager;
+
+        public UsersController()
+        {
+            usersManager = new UsersManager(new EfUsersDal());
+        }
         // GET: api/<UsersController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public Users[] Get()
         {
-            return new string[] { "value1", "value2" };
+            return usersManager.GetAll().ToArray();
         }
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Users Get(int id)
         {
-            return "value";
+            return usersManager.GetById(id);
         }
 
         // POST api/<UsersController>

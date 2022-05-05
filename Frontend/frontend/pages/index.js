@@ -1,6 +1,6 @@
 import useSWR from "swr";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
-export default function Home() {
+export default function Home() { v
   const { data, error } = useSWR(
     "https://localhost:44326/WeatherForecast/listem",
     fetcher
@@ -17,3 +17,16 @@ export default function Home() {
     </div>
   );
 }
+
+// CREATE TABLE "Todos" (
+// 	"Id"	INTEGER NOT NULL UNIQUE,
+// 	"TodoText"	TEXT NOT NULL,
+// 	"Completed"	INTEGER NOT NULL DEFAULT 0,
+// 	"CreatedDate"	TEXT NOT NULL,
+// 	"UpdatedDate"	TEXT,
+// 	"CompletedDate"	TEXT,
+// 	"Priority"	TEXT NOT NULL,
+// 	"ProjectId"	INTEGER NOT NULL,
+// 	FOREIGN KEY("ProjectId") REFERENCES "Projects"("Id") ON DELETE CASCADE,
+// 	PRIMARY KEY("Id" AUTOINCREMENT)
+// );

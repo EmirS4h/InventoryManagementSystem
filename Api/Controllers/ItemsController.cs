@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
@@ -9,18 +9,25 @@ namespace Api.Controllers
     [ApiController]
     public class ItemsController : ControllerBase
     {
+        ItemsManager itemsManager;
+
+        public ItemsController()
+        {
+            itemsManager = new ItemsManager(new EfItemsDal());
+        }
+
         // GET: api/<ItemsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public Items[] Get()
         {
-            return new string[] { "value1", "value2" };
+            return itemsManager.GetAll().ToArray();
         }
 
         // GET api/<ItemsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Items Get(int id)
         {
-            return "value";
+            return itemsManager.GetById(id);
         }
 
         // POST api/<ItemsController>

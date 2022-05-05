@@ -18,5 +18,8 @@ namespace DataAccess.Concrete.EntityFramework
 
         // Project class'i ile Projects Tablosunu iliskilendirir
         public DbSet<Items> Items { get; set; }
+        public DbSet<Brands> Brand { get; set; }
+        public DbSet<Categories> Categories { get; set; }
+
     }
 }

@@ -1,11 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -20,17 +16,17 @@ namespace Business.Concrete
 
         public List<Items> GetAll()
         {
-            throw new NotImplementedException();
+            return _itemsDal.GetAll();
         }
 
         public Items GetById(int id)
         {
-            throw new NotImplementedException();
+            return _itemsDal.Get(i => i.Id == id);
         }
 
         public Items GetByName(string name)
         {
-            throw new NotImplementedException();
+            return _itemsDal.Get(i => i.Name == name);
         }
     }
 }
