@@ -32,20 +32,40 @@ namespace Api.Controllers
 
         // POST api/<ItemsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Items item)
         {
+            Items newItem = new Items()
+            {
+                Name = item.Name,
+                CategoryId = item.CategoryId,
+                BrandId = item.BrandId,
+                Discount = item.Discount,
+                Price = item.Price,
+                Quantity = item.Quantity,
+            };
+            bool itemAdded = itemsManager.Add(newItem);
+            if (itemAdded)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // PUT api/<ItemsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put([FromBody] Items item)
         {
+            itemsManager.Update(item);
         }
 
         // DELETE api/<ItemsController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            itemsManager.Delete(id);
         }
     }
 }

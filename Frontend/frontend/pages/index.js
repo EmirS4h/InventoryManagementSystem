@@ -1,8 +1,8 @@
 import useSWR from "swr";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
-export default function Home() { v
+export default function Home() {
   const { data, error } = useSWR(
-    "https://localhost:44326/WeatherForecast/listem",
+    "https://localhost:44326/api/Users",
     fetcher
   );
   return (
@@ -10,7 +10,7 @@ export default function Home() { v
       {data ? data.map((project) => {
         return (
           <div key={project.id} className="w-1/4 h-52 p-2 border-2 border-black rounded-md shadow-lg">
-            <h2>{project.projectName}</h2>
+            <h2>{project.name}</h2>
           </div>
         );
       }) : "Yükleniyor"}

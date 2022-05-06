@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IItemsService
+    public interface IBrandsService
     {
-        List<Items> GetAll();
-        Items GetById(int id);
-        Items GetByName(string name);
+        List<Brands> GetAll();
+        Brands GetById(int id);
+        Brands GetByName(string name);
         void Delete(int id);
-        bool Add(Items item);
-        void Update(Items item);
+        bool Add(Brands item);
+        void Update(Brands item);
     }
 }

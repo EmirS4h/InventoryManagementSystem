@@ -28,9 +28,17 @@ namespace Business.Concrete
             return _userDal.Get(user => user.Name == name);
         }
 
-        public void Add(Users newUser)
+        public bool Add(Users newUser)
         {
+            Users userExist = GetByName(newUser.Name);
+            if (userExist != null) return false;
             _userDal.Add(newUser);
+            return true;
+        }
+
+        public void Update(Users user)
+        {
+            _userDal.Update(user);
         }
     }
 }

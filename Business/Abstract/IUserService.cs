@@ -12,5 +12,6 @@ namespace Business.Abstract
         List<Users> GetAll();
         Users GetById(int id);
         Users GetByName(string name);
+        void Update(Users user);
     }
 }

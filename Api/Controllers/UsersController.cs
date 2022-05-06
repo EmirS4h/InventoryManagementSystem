@@ -24,21 +24,43 @@ namespace Api.Controllers
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
-        public Users Get(int id)
+        public IActionResult Get(int id)
         {
-            return usersManager.GetById(id);
+            Users user = usersManager.GetById(id);
+            if (user == null) return NotFound();
+            return Ok(user);
         }
 
         // POST api/<UsersController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Users value)
         {
+            Users newUser = new Users()
+            {
+                Name = value.Name,
+                Surname = value.Surname,
+                Email = value.Email,
+                PhoneNumber = value.PhoneNumber,
+                Password = value.Password,
+                LastLogin = value.LastLogin,
+                RegisteredAt = value.RegisteredAt,
+            };
+            bool userAdded = usersManager.Add(newUser);
+            if (userAdded)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put([FromBody] Users user)
         {
+            usersManager.Update(user);
         }
 
         // DELETE api/<UsersController>/5
