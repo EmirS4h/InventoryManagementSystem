@@ -1,7 +1,9 @@
 ﻿using Business.Concrete;
+using Core.PasswordControls;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Api.Controllers
 {
@@ -41,9 +43,9 @@ namespace Api.Controllers
                 Surname = value.Surname,
                 Email = value.Email,
                 PhoneNumber = value.PhoneNumber,
-                Password = value.Password,
-                LastLogin = value.LastLogin,
-                RegisteredAt = value.RegisteredAt,
+                Password = SecurePassword.HashPassword(value.Password),
+                LastLogin = DateTime.Now.ToString(),
+                RegisteredAt = DateTime.Now.ToString(),
             };
             bool userAdded = usersManager.Add(newUser);
             if (userAdded)
@@ -67,6 +69,7 @@ namespace Api.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            usersManager.Delete(usersManager.GetById(id));
         }
     }
 }

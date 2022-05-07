@@ -4,9 +4,9 @@ using System.Security.Cryptography;
 
 namespace Core.PasswordControls
 {
-    public class SecurePassword
+    public static class SecurePassword
     {
-        public string HashPassword(string pass)
+        public static string HashPassword2(string pass)
         {
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {
@@ -14,12 +14,21 @@ namespace Core.PasswordControls
                 return Convert.ToBase64String(data);
             }
         }
-        public bool CheckIfPasswordsMatch(string password,string hashedPassword)
+        public static bool CheckIfPasswordsMatch(string password, string hashedPassword)
         {
             if (HashPassword(password).Equals(hashedPassword))
                 return true;
             else
                 return false;
+        }
+        public static string HashPassword(string pass)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] arr = Encoding.UTF8.GetBytes(pass);
+                byte[] data = sha256.ComputeHash(arr);
+                return Convert.ToBase64String(data);
+            }
         }
     }
 }

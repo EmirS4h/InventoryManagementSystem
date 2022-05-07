@@ -13,5 +13,7 @@ namespace Business.Abstract
         Users GetById(int id);
         Users GetByName(string name);
         void Update(Users user);
+        void Delete(Users user);
+        void Add(Users user);
     }
 }

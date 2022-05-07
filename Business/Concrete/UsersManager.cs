@@ -40,5 +40,15 @@ namespace Business.Concrete
         {
             _userDal.Update(user);
         }
+
+        public void Delete(Users user)
+        {
+            _userDal.Delete(user);
+        }
+
+        void IUserService.Add(Users user)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

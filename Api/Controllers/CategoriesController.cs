@@ -2,7 +2,6 @@
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace Api.Controllers
 {
@@ -52,8 +51,9 @@ namespace Api.Controllers
 
         // PUT api/<CategoriesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put([FromBody] Categories category)
         {
+            categoriesManager.Update(category);
         }
 
         // DELETE api/<CategoriesController>/5
