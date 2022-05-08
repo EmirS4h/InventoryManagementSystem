@@ -14,6 +14,6 @@ namespace Business.Abstract
         Users GetByName(string name);
         void Update(Users user);
         void Delete(Users user);
-        void Add(Users user);
+        bool Add(Users user);
     }
 }

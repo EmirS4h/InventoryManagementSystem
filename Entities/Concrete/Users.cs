@@ -12,5 +12,6 @@ namespace Entities.Concrete
         public string? Password { get; set; }
         public string? RegisteredAt { get; set; }
         public string? LastLogin { get; set; }
+        public string? Role { get; set; }
     }
 }

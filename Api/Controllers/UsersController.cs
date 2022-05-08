@@ -2,8 +2,11 @@
 using Core.PasswordControls;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
+using System.Security.Claims;
 
 namespace Api.Controllers
 {
@@ -33,6 +36,22 @@ namespace Api.Controllers
             return Ok(user);
         }
 
+        [HttpGet("admins")]
+        [Authorize]
+        public IActionResult AdminArea()
+        {
+            var currentUser = GetCurrentUser();
+            return Ok($"Hello admin {currentUser.Name} your role : {currentUser.Role}");
+        }
+
+        [HttpGet("kekolar")]
+        [Authorize(Roles = "Standart")]
+        public IActionResult StdandartKeko()
+        {
+            var currentUser = GetCurrentUser();
+            return Ok($"Hello kekko {currentUser.Name} your role : {currentUser.Role}");
+        }
+
         // POST api/<UsersController>
         [HttpPost]
         public IActionResult Post([FromBody] Users value)
@@ -46,6 +65,7 @@ namespace Api.Controllers
                 Password = SecurePassword.HashPassword(value.Password),
                 LastLogin = DateTime.Now.ToString(),
                 RegisteredAt = DateTime.Now.ToString(),
+                Role = value.Role,
             };
             bool userAdded = usersManager.Add(newUser);
             if (userAdded)
@@ -70,6 +90,29 @@ namespace Api.Controllers
         public void Delete(int id)
         {
             usersManager.Delete(usersManager.GetById(id));
+        }
+
+        [HttpGet("public")]
+        public IActionResult Public()
+        {
+            return Ok("Hg cnm");
+        }
+
+        public Users GetCurrentUser()
+        {
+            if (HttpContext.User.Identity is ClaimsIdentity identity)
+            {
+                var userClaims = identity.Claims;
+                Users user = new()
+                {
+                    Name = userClaims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)?.Value,
+                    Surname = userClaims.FirstOrDefault(u => u.Type == ClaimTypes.Surname)?.Value,
+                    Email = userClaims.FirstOrDefault(u => u.Type == ClaimTypes.Email)?.Value,
+                    Role = userClaims.FirstOrDefault(u => u.Type == ClaimTypes.Role)?.Value,
+                };
+                return user;
+            }
+            return null;
         }
     }
 }
